@@ -1,0 +1,132 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "spacing": 6,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "mpris",
+        "cpu",
+        "memory",
+        "disk",
+        "network",
+        "pulseaudio",
+        "battery",
+        "tray"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "sort-by-number": true
+    },
+
+    "hyprland/window": {
+        "format": "  {}",
+        "max-length": 40,
+        "separate-outputs": true
+    },
+
+    "clock": {
+        "format": "  {:%I:%M %p}",
+        "format-alt": "  {:%A, %B %d, %Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "toggle-format"
+    },
+
+    "mpris": {
+        "format": "{player_icon}  {dynamic}",
+        "format-paused": "{player_icon}  <i>{dynamic}</i>",
+        "player-icons": {
+            "default": "󰐊",
+            "spotify": "󰓇",
+            "firefox": "󰈹",
+            "chromium": "󰖟"
+        },
+        "status-icons": {
+            "paused": "󰏤",
+            "playing": "󰐊",
+            "stopped": "󰓛"
+        },
+        "dynamic-len": 28,
+        "dynamic-order": ["title", "artist"],
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    },
+
+    "cpu": {
+        "format": "󰻠  {usage}%",
+        "interval": 2,
+        "tooltip": true,
+        "on-click": "kitty --title btop btop"
+    },
+
+    "memory": {
+        "format": "󰍛  {used:0.1f}G",
+        "interval": 5,
+        "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G"
+    },
+
+    "disk": {
+        "format": "󰋊  {percentage_used}%",
+        "interval": 30,
+        "path": "/",
+        "tooltip-format": "{used} / {total} used on {path}"
+    },
+
+    "network": {
+        "format-wifi": "󰤨  {essid}",
+        "format-ethernet": "󰈀  {ipaddr}",
+        "format-disconnected": "󰤭  No Network",
+        "tooltip-format-wifi": "  {essid} ({signalStrength}%)\n  {ipaddr}\n  {bandwidthDownBits} down  {bandwidthUpBits} up",
+        "tooltip-format-ethernet": "  {ifname}\n  {ipaddr}\n  {bandwidthDownBits} down  {bandwidthUpBits} up",
+        "on-click": "nm-connection-editor",
+        "interval": 5
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰖁  Muted",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋋",
+            "headset": "󰋋",
+            "phone": "󰏲",
+            "portable": "󰏲",
+            "car": "󰄋",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+    },
+
+    "battery": {
+        "states": {
+            "good": 90,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
+        "format-plugged": "󰚥  {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{timeTo}\nCycle count: {cycles}"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
+}

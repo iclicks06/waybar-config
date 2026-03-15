@@ -1,0 +1,210 @@
+* {
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background: rgba(15, 15, 20, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 0 8px;
+}
+
+/* Blur effect — requires Hyprland blur on waybar layer */
+window#waybar > box {
+    background: transparent;
+}
+
+/* ── Base module style ── */
+#workspaces,
+#window,
+#clock,
+#mpris,
+#cpu,
+#memory,
+#disk,
+#network,
+#pulseaudio,
+#battery,
+#tray {
+    color: rgba(220, 220, 235, 0.9);
+    padding: 0 10px;
+    margin: 4px 2px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+/* ── Workspaces ── */
+#workspaces button {
+    color: rgba(180, 180, 200, 0.5);
+    background: transparent;
+    padding: 0 6px;
+    margin: 0 2px;
+    border-radius: 8px;
+    min-width: 28px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(220, 220, 235, 0.9);
+}
+
+#workspaces button.active {
+    background: rgba(180, 140, 255, 0.2);
+    color: #c4a8ff;
+    border: 1px solid rgba(180, 140, 255, 0.3);
+}
+
+#workspaces button.urgent {
+    background: rgba(255, 100, 100, 0.2);
+    color: #ff8080;
+    border: 1px solid rgba(255, 100, 100, 0.3);
+}
+
+/* ── Window title ── */
+#window {
+    color: rgba(200, 200, 220, 0.6);
+    font-size: 12px;
+}
+
+/* ── Clock ── */
+#clock {
+    color: rgba(220, 220, 235, 0.95);
+    font-weight: 500;
+}
+
+/* ── Media player ── */
+#mpris {
+    background: rgba(100, 220, 150, 0.1);
+    border: 1px solid rgba(100, 220, 150, 0.2);
+    color: #7de8a8;
+}
+
+#mpris.paused {
+    background: rgba(150, 150, 180, 0.1);
+    border-color: rgba(150, 150, 180, 0.2);
+    color: rgba(200, 200, 220, 0.5);
+}
+
+/* ── CPU ── */
+#cpu {
+    background: rgba(100, 160, 255, 0.08);
+    border: 1px solid rgba(100, 160, 255, 0.15);
+    color: #88b4ff;
+}
+
+#cpu.warning {
+    background: rgba(255, 200, 80, 0.12);
+    border-color: rgba(255, 200, 80, 0.25);
+    color: #ffd080;
+}
+
+#cpu.critical {
+    background: rgba(255, 100, 100, 0.15);
+    border-color: rgba(255, 100, 100, 0.3);
+    color: #ff8080;
+}
+
+/* ── Memory ── */
+#memory {
+    background: rgba(160, 120, 255, 0.08);
+    border: 1px solid rgba(160, 120, 255, 0.15);
+    color: #c4a8ff;
+}
+
+/* ── Disk ── */
+#disk {
+    background: rgba(80, 200, 200, 0.08);
+    border: 1px solid rgba(80, 200, 200, 0.15);
+    color: #80d4d4;
+}
+
+/* ── Network ── */
+#network {
+    background: rgba(80, 200, 120, 0.08);
+    border: 1px solid rgba(80, 200, 120, 0.15);
+    color: #80d498;
+}
+
+#network.disconnected {
+    background: rgba(255, 80, 80, 0.08);
+    border-color: rgba(255, 80, 80, 0.15);
+    color: #ff8080;
+}
+
+/* ── Audio ── */
+#pulseaudio {
+    background: rgba(255, 180, 80, 0.08);
+    border: 1px solid rgba(255, 180, 80, 0.15);
+    color: #ffcc80;
+}
+
+#pulseaudio.muted {
+    background: rgba(120, 120, 140, 0.08);
+    border-color: rgba(120, 120, 140, 0.15);
+    color: rgba(180, 180, 200, 0.4);
+}
+
+/* ── Battery ── */
+#battery {
+    background: rgba(100, 220, 150, 0.08);
+    border: 1px solid rgba(100, 220, 150, 0.15);
+    color: #80e8a8;
+}
+
+#battery.warning {
+    background: rgba(255, 200, 80, 0.12);
+    border-color: rgba(255, 200, 80, 0.25);
+    color: #ffd080;
+}
+
+#battery.critical {
+    background: rgba(255, 80, 80, 0.15);
+    border-color: rgba(255, 80, 80, 0.3);
+    color: #ff8080;
+    animation: blink 1s steps(1) infinite;
+}
+
+#battery.charging,
+#battery.plugged {
+    background: rgba(100, 220, 150, 0.15);
+    border-color: rgba(100, 220, 150, 0.3);
+    color: #60e890;
+}
+
+@keyframes blink {
+    to { opacity: 0.4; }
+}
+
+/* ── Tray ── */
+#tray {
+    padding: 0 6px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .active {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+}
+
+/* ── Tooltip ── */
+tooltip {
+    background: rgba(15, 15, 20, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: rgba(220, 220, 235, 0.9);
+    padding: 6px 10px;
+}
